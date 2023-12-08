@@ -12,10 +12,10 @@ export const AppLayout = () => {
             <li>
               <NavLink to="/movies">Movies</NavLink>
             </li>
-            <Outlet />
           </ul>
         </nav>
       </header>
+      <Outlet />
     </div>
   );
 };

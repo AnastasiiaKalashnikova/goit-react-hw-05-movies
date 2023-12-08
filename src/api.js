@@ -1,10 +1,12 @@
-const axios = 'axios';
+import axios from 'axios';
+
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-const API_KEY = 'api_key=385f1c9d7cd582645a2d157ab40fd9e0';
+const API_KEY = 'api_key=3ba855b17ad290e76ce8340a960fb4fb';
 
 export const getTopMovies = async () => {
-  const topMovies = await axios.get(`trending/movie?${API_KEY}`);
-  return topMovies;
+  const topMovies = await axios.get(`trending/movie/week?${API_KEY}`);
+  console.log(topMovies.data);
+  return topMovies.data;
 };
 
 export const getMovieByInput = async inputValue => {
@@ -16,17 +18,17 @@ export const getMovieByInput = async inputValue => {
 
 export const getFullInformation = async movieId => {
   const movieInformation = await axios.get(`movie/${movieId}?${API_KEY}`);
-  return movieInformation;
+  return movieInformation.data;
 };
 
 export const getCast = async movieId => {
   const movieCast = await axios.get(`movie/${movieId}/credits?${API_KEY}`);
-  return movieCast;
+  return movieCast.data;
 };
 
 export const getReviews = async movieId => {
   const movieReviews = await axios.get(
     `movie/${movieId}/reviews?page=1&${API_KEY}`
   );
-  return movieReviews;
+  return movieReviews.data;
 };

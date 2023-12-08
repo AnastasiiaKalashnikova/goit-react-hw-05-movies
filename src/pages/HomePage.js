@@ -1,24 +1,26 @@
-import { Formik, Field, Form } from 'formik';
+import { getTopMovies } from 'api';
+import { TopList } from 'components/TopList/TopList';
+import { useEffect, useState } from 'react';
 
-// це може бути просто компонент окремий
 export const HomePage = () => {
+  const [topMovies, setTopMovies] = useState([]);
+  useEffect(() => {
+    async function getMovies() {
+      try {
+        const fetchedMovies = await getTopMovies();
+        setTopMovies(fetchedMovies.results);
+      } catch {
+        console.log('error');
+      } finally {
+      }
+    }
+    getMovies();
+  }, []);
   return (
     <div>
-      HOME
-      <Formik
-        initialValues={{
-          searchMovie: '',
-        }}
-        onSubmit={async values => {
-          actions.resetForm();
-        }}
-      >
-        <Form>
-          <Field id="searchMovie" name="searchMovie" />
-
-          <button type="submit">Search</button>
-        </Form>
-      </Formik>
+      <h1>HOME</h1>
+      <TopList movieList={topMovies} />
     </div>
   );
 };
+// це може бути просто компонент окремий
