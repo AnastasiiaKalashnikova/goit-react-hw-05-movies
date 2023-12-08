@@ -15,7 +15,7 @@ export const Cast = () => {
       }
     }
     getInformation();
-  }, []);
+  }, [params.movieId]);
   return (
     <div>
       <ul>

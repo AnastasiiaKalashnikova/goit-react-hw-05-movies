@@ -15,7 +15,7 @@ export const Reviews = () => {
       }
     }
     getInformation();
-  }, []);
+  }, [params.movieId]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ export const Reviews = () => {
         {reviews.map(review => {
           return (
             <li>
-              <h4>{review.author}</h4>
+              <h4>Author: {review.author}</h4>
               <p>{review.content}</p>
             </li>
           );

@@ -15,7 +15,7 @@ export const MovieDetails = () => {
       }
     }
     getInformation();
-  }, []);
+  }, [params.movieId]);
 
   return (
     <div>
@@ -26,8 +26,8 @@ export const MovieDetails = () => {
         height={800}
       />
       <p>Release date: {movieInfo.release_date}</p>
-      <p>vote average: {movieInfo.vote_average}</p>
-      <p>overview: {movieInfo.overview}</p>
+      <p>Rates: {movieInfo.vote_average}</p>
+      <p>Overview: {movieInfo.overview}</p>
       <div>
         <p>Addition information</p>
         <ul>
