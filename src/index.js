@@ -12,7 +12,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
-// 385f1c9d7cd582645a2d157ab40fd9e0
-//           <Route path="cast" element={Cast} />
-//         <Route path="reviews" element={Reviews} />
