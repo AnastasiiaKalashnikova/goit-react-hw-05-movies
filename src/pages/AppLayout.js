@@ -1,4 +1,5 @@
 import { Nav, Wrapp } from 'components/AppLayout/StyledAppLayout';
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const AppLayout = () => {
@@ -17,7 +18,9 @@ export const AppLayout = () => {
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </main>
     </Wrapp>
   );
