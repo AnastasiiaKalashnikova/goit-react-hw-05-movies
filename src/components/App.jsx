@@ -1,4 +1,4 @@
-//import { AppLayout } from 'pages/AppLayout';
+import { AppLayout } from 'pages/AppLayout';
 //import { HomePage } from 'pages/HomePage';
 //import { MovieDetails } from 'pages/MovieDetails';
 //import { Movies } from 'pages/Movies';
@@ -7,10 +7,10 @@ import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
 import { Suspense, lazy } from 'react';
 
-const AppLayout = lazy(() => import('../pages/AppLayout'));
-const HomePage = lazy(() => import('../pages/HomePage'));
-const Movies = lazy(() => import('../pages/Movies'));
-const MovieDetails = lazy(() => import('../pages/MovieDetails'));
+//const AppLayout = lazy(() => import('../pages/AppLayout'));
+const HomePage = lazy(() => import('pages/HomePage'));
+const Movies = lazy(() => import('pages/Movies'));
+const MovieDetails = lazy(() => import('pages/MovieDetails'));
 
 export const App = () => {
   return (
