@@ -18,9 +18,8 @@ export const HomePage = () => {
   }, []);
   return (
     <div>
-      <h1>HOME</h1>
+      <h2> Trending today</h2>
       <TopList movieList={topMovies} />
     </div>
   );
 };
-// це може бути просто компонент окремий

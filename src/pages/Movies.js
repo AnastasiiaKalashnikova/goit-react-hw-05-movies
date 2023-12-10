@@ -1,36 +1,31 @@
 import { getMovieByInput } from 'api';
+import { SearchForm } from 'components/Form/Form';
 import { TopList } from 'components/TopList/TopList';
-import { Field, Form, Formik } from 'formik';
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
   const [params, setParams] = useSearchParams();
   const input = params.get('query');
-  const [moviesList, setMoviesList] = useState('');
+  const [moviesList, setMoviesList] = useState([]);
+  const location = useLocation();
+  useEffect(() => {
+    async function getMovies() {
+      try {
+        const moviesByInput = await getMovieByInput(input);
+        setMoviesList(moviesByInput.results);
+      } catch {}
+    }
+    getMovies();
+  }, [params]);
 
   return (
     <div>
       MOVIES
-      <Formik
-        initialValues={{
-          searchMovie: input ?? '',
-        }}
-        onSubmit={async (values, actions) => {
-          const moviesByInput = await getMovieByInput(values.searchMovie);
-          setMoviesList(moviesByInput.results);
-          console.log(moviesByInput.results);
-          setParams({ query: values.searchMovie });
-          actions.resetForm();
-        }}
-      >
-        <Form>
-          <Field id="searchMovie" name="searchMovie" />
-
-          <button type="submit">Search</button>
-        </Form>
-      </Formik>
-      {params.size !== 0 && <TopList movieList={moviesList} />}
+      <SearchForm />
+      {params.size !== 0 && (
+        <TopList movieList={moviesList} location={location} />
+      )}
     </div>
   );
 };

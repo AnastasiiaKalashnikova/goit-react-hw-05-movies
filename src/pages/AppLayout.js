@@ -1,21 +1,22 @@
+import { Layout, Nav, Wrapp } from 'components/AppLayout/StyledAppLayout';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const AppLayout = () => {
   return (
-    <div>
+    <Wrapp>
       <header>
         <nav>
-          <ul>
+          <Nav>
             <li>
               <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/movies">Movies</NavLink>
             </li>
-          </ul>
+          </Nav>
         </nav>
       </header>
       <Outlet />
-    </div>
+    </Wrapp>
   );
 };
