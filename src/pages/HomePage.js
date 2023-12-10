@@ -9,8 +9,9 @@ export const HomePage = () => {
       try {
         const fetchedMovies = await getTopMovies();
         setTopMovies(fetchedMovies.results);
+        console.log(fetchedMovies);
       } catch {
-        console.log('error');
+        console.log('fetchedMovies');
       } finally {
       }
     }

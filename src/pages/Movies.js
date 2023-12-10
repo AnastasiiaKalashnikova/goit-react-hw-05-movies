@@ -14,7 +14,10 @@ export const Movies = () => {
       try {
         const moviesByInput = await getMovieByInput(input);
         setMoviesList(moviesByInput.results);
-      } catch {}
+        console.log(moviesByInput);
+      } catch {
+        console.log('error');
+      }
     }
     getMovies();
   }, [input]);

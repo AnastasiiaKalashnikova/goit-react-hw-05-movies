@@ -26,6 +26,7 @@ export const MovieDetails = () => {
         const info = await getFullInformation(params.movieId);
         setMovieInfo(info);
       } catch {
+        console.log('error');
       } finally {
       }
     }
