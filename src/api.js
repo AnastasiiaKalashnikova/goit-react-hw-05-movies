@@ -5,15 +5,15 @@ const API_KEY = 'api_key=3ba855b17ad290e76ce8340a960fb4fb';
 
 export const getTopMovies = async () => {
   const topMovies = await axios.get(`trending/movie/week?${API_KEY}`);
-  console.log(topMovies.data);
   return topMovies.data;
 };
 
 export const getMovieByInput = async inputValue => {
+  console.log(inputValue);
   const metchedMovies = await axios.get(
     `search/movie?query=${inputValue}&${API_KEY}&page=1`
   );
-  return metchedMovies;
+  return metchedMovies.data;
 };
 
 export const getFullInformation = async movieId => {

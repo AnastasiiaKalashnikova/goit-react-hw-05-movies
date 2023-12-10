@@ -1,8 +1,20 @@
 import { getFullInformation } from 'api';
-import { useEffect, useState } from 'react';
-import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 
 export const MovieDetails = () => {
+  //не працює
+  const location = useLocation();
+  const backLinkRef = useRef(location);
+
+  // console.log(location);
+  //console.log(backLinkRef.current);
   const params = useParams();
   const [movieInfo, setMovieInfo] = useState([]);
   useEffect(() => {
@@ -19,7 +31,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <a>Go back</a>
+      <Link to={backLinkRef.current.state?.from}>Go back</Link>
       <h2>{movieInfo.original_title}</h2>
       <img
         src={`https://www.themoviedb.org/t/p/original${movieInfo.poster_path}`}

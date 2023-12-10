@@ -21,7 +21,7 @@ export const Cast = () => {
       <ul>
         {cast.map(character => {
           return (
-            <li>
+            <li key={character.id}>
               <img
                 src={`https://www.themoviedb.org/t/p/original${character.profile_path}`}
                 alt=""
