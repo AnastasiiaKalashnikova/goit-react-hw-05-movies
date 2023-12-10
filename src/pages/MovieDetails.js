@@ -21,7 +21,6 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log(movieId);
     async function getInformation() {
       try {
         setIsLoading(true);
