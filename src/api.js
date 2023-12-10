@@ -9,7 +9,6 @@ export const getTopMovies = async () => {
 };
 
 export const getMovieByInput = async inputValue => {
-  console.log(inputValue);
   const metchedMovies = await axios.get(
     `search/movie?query=${inputValue}&${API_KEY}&page=1`
   );

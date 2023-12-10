@@ -10,7 +10,6 @@ export const HomePage = () => {
       try {
         const fetchedMovies = await getTopMovies();
         setTopMovies(fetchedMovies.results);
-        console.log(fetchedMovies);
       } catch {
         return toast.error('Something went wrong... Try again!');
       }
