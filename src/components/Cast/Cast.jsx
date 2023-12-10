@@ -11,7 +11,7 @@ export const Cast = () => {
         const castList = await getCast(params.movieId);
         setCast(castList.cast);
       } catch {
-      } finally {
+        return toast.error('Something went wrong... Try again!');
       }
     }
     getInformation();

@@ -11,7 +11,7 @@ export const Reviews = () => {
         const reviewsList = await getReviews(params.movieId);
         setReviews(reviewsList.results);
       } catch {
-      } finally {
+        return toast.error('Something went wrong... Try again!');
       }
     }
     getInformation();

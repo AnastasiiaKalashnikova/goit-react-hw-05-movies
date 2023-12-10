@@ -1,6 +1,7 @@
 import { getFullInformation } from 'api';
 import { Wrapp } from 'components/MovieDetails/StyledMovieDetails';
 import { useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 import {
   Link,
   NavLink,
@@ -14,10 +15,6 @@ export const MovieDetails = () => {
   const location = useLocation();
   const locRef = useRef(location);
 
-  //const backLinkRef = useRef(location);
-
-  console.log(location);
-  // console.log(backLinkRef.current);
   const params = useParams();
   const [movieInfo, setMovieInfo] = useState([]);
   useEffect(() => {
@@ -26,7 +23,7 @@ export const MovieDetails = () => {
         const info = await getFullInformation(params.movieId);
         setMovieInfo(info);
       } catch {
-        console.log('error');
+        return toast.error('Something went wrong... Try again!');
       } finally {
       }
     }

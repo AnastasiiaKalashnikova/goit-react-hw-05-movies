@@ -2,6 +2,7 @@ import { getMovieByInput } from 'api';
 import { SearchForm } from 'components/Form/Form';
 import { TopList } from 'components/TopList/TopList';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
@@ -14,9 +15,8 @@ export const Movies = () => {
       try {
         const moviesByInput = await getMovieByInput(input);
         setMoviesList(moviesByInput.results);
-        console.log(moviesByInput);
       } catch {
-        console.log('error');
+        return toast.error('Something went wrong... Try again!');
       }
     }
     getMovies();

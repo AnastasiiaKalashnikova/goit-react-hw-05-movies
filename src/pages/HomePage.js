@@ -1,6 +1,7 @@
 import { getTopMovies } from 'api';
 import { TopList } from 'components/TopList/TopList';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export const HomePage = () => {
   const [topMovies, setTopMovies] = useState([]);
@@ -11,8 +12,7 @@ export const HomePage = () => {
         setTopMovies(fetchedMovies.results);
         console.log(fetchedMovies);
       } catch {
-        console.log('fetchedMovies');
-      } finally {
+        return toast.error('Something went wrong... Try again!');
       }
     }
     getMovies();
