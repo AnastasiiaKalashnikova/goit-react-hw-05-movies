@@ -1,24 +1,32 @@
 import { getCast } from 'api';
+import { Loader } from 'components/Loader/Loader';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
-export const Cast = () => {
+const Cast = () => {
   const params = useParams();
   const [cast, setCast] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     async function getInformation() {
       try {
+        setIsLoading(true);
         const castList = await getCast(params.movieId);
         setCast(castList.cast);
       } catch {
         return toast.error('Something went wrong... Try again!');
+      } finally {
+        setIsLoading(false);
       }
     }
     getInformation();
   }, [params.movieId]);
   return (
     <div>
+      <Loader statuse={isLoading} />
+
       <ul>
         {cast.map(character => {
           return (
@@ -41,3 +49,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast;

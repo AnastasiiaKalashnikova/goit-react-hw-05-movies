@@ -1,6 +1,7 @@
 import { getFullInformation } from 'api';
+import { Loader } from 'components/Loader/Loader';
 import { Wrapp } from 'components/MovieDetails/StyledMovieDetails';
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import {
   Link,
@@ -10,28 +11,35 @@ import {
   useParams,
 } from 'react-router-dom';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   //не працює
   const location = useLocation();
   const locRef = useRef(location);
 
-  const params = useParams();
+  const { movieId } = useParams('');
   const [movieInfo, setMovieInfo] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
+    console.log(movieId);
     async function getInformation() {
       try {
-        const info = await getFullInformation(params.movieId);
+        setIsLoading(true);
+
+        const info = await getFullInformation(movieId);
         setMovieInfo(info);
       } catch {
         return toast.error('Something went wrong... Try again!');
       } finally {
+        setIsLoading(false);
       }
     }
     getInformation();
-  }, [params.movieId]);
+  }, [movieId]);
 
   return (
-    <div>
+    <>
+      <Loader statuse={isLoading} />
       <Link to={locRef.current.state?.from ?? '/'}>Go back</Link>
       <h2>{movieInfo.original_title}</h2>
       <Wrapp>
@@ -61,8 +69,12 @@ export const MovieDetails = () => {
         </ul>
       </div>
       <div>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
-    </div>
+    </>
   );
 };
+
+export default MovieDetails;
