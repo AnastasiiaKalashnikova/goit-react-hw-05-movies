@@ -10,6 +10,8 @@ body {
 }
 li {
   padding: 40px 80px;
+  border: 0 0 2px 0;
+  margin-bottom: 20px;
 }
 code {
   width: 100%;

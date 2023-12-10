@@ -38,8 +38,12 @@ export const MovieDetails = () => {
       <h2>{movieInfo.original_title}</h2>
       <Wrapp>
         <img
-          src={`https://www.themoviedb.org/t/p/original${movieInfo.poster_path}`}
-          height={600}
+          src={
+            movieInfo.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`
+              : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+          }
+          alt="poster"
         />
         <div>
           <p>Release date: {movieInfo.release_date}</p>

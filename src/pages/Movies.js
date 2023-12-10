@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
-  const [params, setParams] = useSearchParams();
+  const [params] = useSearchParams();
   const input = params.get('query');
   const [moviesList, setMoviesList] = useState([]);
   const location = useLocation();
@@ -17,11 +17,10 @@ export const Movies = () => {
       } catch {}
     }
     getMovies();
-  }, [params]);
+  }, [input]);
 
   return (
     <div>
-      MOVIES
       <SearchForm />
       {params.size !== 0 && (
         <TopList movieList={moviesList} location={location} />

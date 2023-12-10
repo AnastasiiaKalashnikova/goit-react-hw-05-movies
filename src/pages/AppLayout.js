@@ -1,4 +1,4 @@
-import { Layout, Nav, Wrapp } from 'components/AppLayout/StyledAppLayout';
+import { Nav, Wrapp } from 'components/AppLayout/StyledAppLayout';
 import { NavLink, Outlet } from 'react-router-dom';
 
 export const AppLayout = () => {

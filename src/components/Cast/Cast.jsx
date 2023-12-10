@@ -23,8 +23,12 @@ export const Cast = () => {
           return (
             <li key={character.id}>
               <img
-                src={`https://www.themoviedb.org/t/p/original${character.profile_path}`}
-                alt=""
+                src={
+                  character.profile_path
+                    ? `https://www.themoviedb.org/t/p/original${character.profile_path}`
+                    : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+                }
+                alt="poster"
                 height={320}
               />
               <p>{character.character}</p>
