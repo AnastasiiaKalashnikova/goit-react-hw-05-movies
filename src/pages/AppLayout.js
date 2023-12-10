@@ -16,7 +16,9 @@ export const AppLayout = () => {
           </Nav>
         </nav>
       </header>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </Wrapp>
   );
 };
