@@ -2,7 +2,7 @@ import { Field, Form, Formik } from 'formik';
 import { useSearchParams } from 'react-router-dom';
 
 export const SearchForm = () => {
-  const [_, setParams] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   return (
     <div>
       <Formik
@@ -12,6 +12,7 @@ export const SearchForm = () => {
         onSubmit={async (values, actions) => {
           setParams({ query: values.searchMovie });
           actions.resetForm();
+          console.log(params);
         }}
       >
         <Form>
